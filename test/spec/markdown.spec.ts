@@ -3,16 +3,17 @@ import { markdown } from '../../src'
 describe('renderer', () => {
   it('should render headers', () => {
     const html = markdown.render(`
-    # This is level1
-    ## This is level2
-    ###### This level6
+# This is level1
+
+## This is level2
+
+###### This level6
     `)
 
     expect(html).toMatchInlineSnapshot(`
-"<pre><code># This is level1
-## This is level2
-###### This level6
-</code></pre>
+"<h1 id=\\"this-is-level1\\">This is level1</h1>
+<h2 id=\\"this-is-level2\\">This is level2</h2>
+<h6 id=\\"this-level6\\">This level6</h6>
 "
 `)
   })
@@ -61,11 +62,28 @@ const var = 3
     })
   })
 
+  describe('renderer', () => {
+    it('should render md links', () => {
+      const html = markdown.render(`
+- [link1](./link.md)
+- [link2](./README.md)
+`)
+
+      expect(html).toMatchInlineSnapshot(`
+"<ul>
+<li><a href=\\"link.html\\">link1</a></li>
+<li><a href=\\"index.html\\">link2</a></li>
+</ul>
+"
+`)
+    })
+  })
+
   // describe('renderer', () => {
   //   it('should render xxx', () => {
   //     const html = markdown.render(`
-  //     `)
-
+  //# mardown
+  //`)
   //     expect(html).toMatchInlineSnapshot()
   //   })
   // })

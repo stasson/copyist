@@ -33,13 +33,18 @@ cli
       files.forEach(file => {
         const mdFile = path.join(options.base,file)
         const md = fs.readFileSync(mdFile, 'utf8')
-        const destName = path.basename(file, path.extname(file)) + '.html'
-        const destDir = path.join(options.output, path.dirname(file))
-        fs.mkdirpSync(destDir)
-        const dest = path.join(destDir, destName)
-        console.log(`copying ${mdFile} to ${dest} ...`)
+
+        let {dir, name} = path.parse(file)
+        if (name.toLocaleUpperCase() == 'README') {
+          name = 'index'
+        }
+        const destDir = path.join(options.output, dir)
+        const destFile = path.join(destDir, name + '.html')
+        console.info(`rendering ${destFile} from ${mdFile}  ...`)
+
         const html = render(md)
-        fs.writeFileSync(dest, html)
+        fs.mkdirpSync(destDir)
+        fs.writeFileSync(destFile, html)
       })
   })
 
