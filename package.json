@@ -40,6 +40,9 @@
     "semi": false,
     "proseWrap": "always"
   },
+  "standard-commit": {
+    "promptScope": false
+  },
   "devDependencies": {
     "@types/jest": "^24.0.0",
     "@types/node": "^10.12.18",
