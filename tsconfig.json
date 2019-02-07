@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "target": "es2017",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "dist",
+    "declaration": true,
+    "resolveJsonModule": true
+  },
+  "inlineSourceMap": true,
+  "inlineSources": true,
+  "types": ["jest", "node"],
+  "include": ["src", "test", "cli.js"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
