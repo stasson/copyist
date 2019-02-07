@@ -1,17 +1,22 @@
 {
   "name": "doctr",
   "version": "0.1.0",
-  "description": "one who makes copy",
+  "description": "lightweight markdown renderer",
   "author": {
     "name": "stasson",
     "email": "sebastien.tasson@gmail.com"
   },
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "MIT",
+  "keywords": [
+    "markdown",
+    "doc"
+  ],
   "main": "dist/index.js",
   "types": "./lib/index.d.ts",
   "bin": "bin/cli.js",
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "scripts": {
     "start": "run-s build:dist && node bin/cli.js",
