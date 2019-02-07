@@ -14,7 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "start": "run-s build && node bin/cli.js",
+    "start": "run-s build:dist && node bin/cli.js",
     "tdd": "jest --runInBand --watch",
     "test": "jest",
     "build": "run-s build:*",
@@ -22,7 +22,11 @@
     "build:dist": "tsc -p tsconfig.dist.json",
     "format": "prettier --write \"{src,tests,bin}/**/*.js\"",
     "commit": "standard-commit",
-    "release": "standard-version"
+    "prepublishOnly": "run-s build",
+    "release": "run-s release:*",
+    "release:checks": "run-s test",
+    "release:version": "standard-version",
+    "release:publish": "git push --follow-tags && npm publish"
   },
   "engines": {
     "node": ">=8",

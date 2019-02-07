@@ -18,6 +18,14 @@ describe('renderer', () => {
       padding: 45px;
     }
 
+    .markdown-body img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      min-width: 20%;
+      max-height: 400px;
+    }
+
     @media (max-width: 767px) {
       .markdown-body {
         padding: 15px;

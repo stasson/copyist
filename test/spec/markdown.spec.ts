@@ -79,11 +79,9 @@ const var = 3
     })
   })
 
-
-
   describe('renderer', () => {
     it('should render footnotes', () => {
-      const html = markdown.render(  `
+      const html = markdown.render(`
 Here is a footnote reference,[^1] and another.[^longnote]
 
 [^1]: Here is the footnote.
@@ -92,13 +90,24 @@ Here is a footnote reference,[^1] and another.[^longnote]
 
     Subsequent paragraphs are indented to show that they
 belong to the previous footnote.
-      `
-    )
-      expect(html).toMatchInlineSnapshot()
+      `)
+      expect(html).toMatchInlineSnapshot(`
+"<p>Here is a footnote reference,<sup class=\\"footnote-ref\\"><a href=\\"#fn1\\" id=\\"fnref1\\">[1]</a></sup> and another.<sup class=\\"footnote-ref\\"><a href=\\"#fn2\\" id=\\"fnref2\\">[2]</a></sup></p>
+<hr class=\\"footnotes-sep\\">
+<section class=\\"footnotes\\">
+<ol class=\\"footnotes-list\\">
+<li id=\\"fn1\\" class=\\"footnote-item\\"><p>Here is the footnote. <a href=\\"#fnref1\\" class=\\"footnote-backref\\">↩︎</a></p>
+</li>
+<li id=\\"fn2\\" class=\\"footnote-item\\"><p>Here’s one with multiple blocks.</p>
+<p>Subsequent paragraphs are indented to show that they
+belong to the previous footnote. <a href=\\"#fnref2\\" class=\\"footnote-backref\\">↩︎</a></p>
+</li>
+</ol>
+</section>
+"
+`)
     })
   })
-
-
 
   // describe('renderer', () => {
   //   it('should render xxx', () => {
