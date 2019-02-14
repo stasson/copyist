@@ -12,7 +12,6 @@ chain
   .options
   .html(true)
   .linkify(true)
-  .typographer(true)
   .end()
 
   .plugin('mdlinks').use(MarkdownLink).end()
